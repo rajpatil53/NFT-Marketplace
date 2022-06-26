@@ -1,15 +1,16 @@
 require("@nomiclabs/hardhat-waffle");
 require("@nomiclabs/hardhat-ethers");
 const fs = require('fs');
+require("dotenv").config({ path: ".env" });
 // const infuraId = fs.readFileSync(".infuraid").toString().trim() || "";
 
-task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
-  const accounts = await hre.ethers.getSigners();
+// task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
+//   const accounts = await hre.ethers.getSigners();
 
-  for (const account of accounts) {
-    console.log(account.address);
-  }
-});
+//   for (const account of accounts) {
+//     console.log(account.address);
+//   }
+// });
 
 module.exports = {
   defaultNetwork: "hardhat",
@@ -26,8 +27,8 @@ module.exports = {
       //accounts: [process.env.privateKey]
     },
     goerli: {
-      url: process.env.REACT_APP_ALCHEMY_API_URL,
-      accounts: [ process.env.REACT_APP_PRIVATE_KEY ]
+      url: process.env.ALCHEMY_API_URL,
+      accounts: [process.env.PRIVATE_KEY]
     }
   },
   solidity: {
